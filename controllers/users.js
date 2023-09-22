@@ -28,7 +28,7 @@ userRouter.post("/", async (request, response) => {
   response.status(201).json(savedUser);
 });
 userRouter.get("/", async (request, response) => {
-  const users = await User.find({}).populate("blogs",{title:1,author:1,url:1,likes:1});
+  const users = await User.find({}).populate("blogs",{sport:1,location:1,pop:1});
   response.json(users);
 });
 

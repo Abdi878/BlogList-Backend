@@ -1,15 +1,17 @@
 const mongoose = require("mongoose");
 
 const blogSchema = new mongoose.Schema({
-  title: String,
-  author: String,
-  url: String,
-  likes: Number,
+  motive: String,
+  sport: String,
+  location: String,
+  pop: Number,
+  image: String,
+  members: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
   },
-  comments: Array
+  comments: [{ comment: String, user: Object }],
 });
 
 blogSchema.set("toJSON", {
@@ -19,5 +21,4 @@ blogSchema.set("toJSON", {
     delete returnedObject.__v;
   },
 });
-
 module.exports = mongoose.model("Blog", blogSchema);
